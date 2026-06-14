@@ -1,1 +1,42 @@
-<p>home works!</p>
+<div class="container">
+    <div>
+        <h1>Bienvenido a Tecno App</h1>
+        
+        <p>
+            Aqui podras explorar nuestro catalogo de productos tecnologicos, navegar por el listado de productos y consultar informacion dertallada de cada uno
+        </p>
+
+        <a class="btn btn-primary" routerLink="/products">Ver productos</a>
+    </div>
+
+    <hr>
+
+    <div>
+        <h2>Instructivo para incorporar Bootstrap al proyecto</h2>
+
+        <ol>
+            <li>
+                Acceder a <a href="https://get.bootstrap.com" target="_blank">https://getbootstrap.com</a>y copiar el comando para instalar el modulo en la app
+            </li>
+            <li>
+                Dentro de la app abrir la terminal, pegar y ejecutar el comando
+            </li>
+            <li>
+                En la carpeta node_modules buscar la carpeta bootstrap, desplegar la carpeta dist y luego css
+            </li>
+            <li>
+                Dentro de css buscar el archivo <span>bootstrap.min.css</span>, clickear con el boton derecho y copiar la ruta relativa
+            </li>
+            <li>
+                Buscar la clave <span>styles</span> dentro del <span>build</span> en el archivo <span>amgular.jdon</span>, y agregar la ruta copiada (va entre ""), de ser necesario reemplazar las \ por /
+            </li>
+            <li>
+                <span>Solo en caso de ser necesario incorporar JS:</span> ir a la carpeta js dentro de node_modules/bootstrap/dist y copiar la ruta relativa del archivo <span>bootstrap.bundle.min.js</span>
+            </li>
+            <li>
+                buscar la clave <span>scripts</span> dentro del <span>build</span> del <span>angular.json</span> y agregar la ruta copiada (igual que antes, va entre "", y reemplazando las \ por / en caso de ser necesario)
+            </li>
+        </ol>
+    </div>
+
+</div>
