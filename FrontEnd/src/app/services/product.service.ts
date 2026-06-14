@@ -20,5 +20,9 @@ export class ProductService {
     return this._httpClient.get<Producto>(`${this._url}/${id}`)
   }
 
+  public eliminarProductoService(id: number | string): Observable<Producto> {
+    return this._httpClient.delete<Producto>(`${this._url}/${id}`)
+  }
+
   
 }

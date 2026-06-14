@@ -1,1 +1,33 @@
-<p>product-detail works!</p>
+<div class="container py-5">
+    @if(producto) {
+
+    <div class="card" id="card">
+        <img [src]="producto.imagen" class="card-img-top" [alt]="producto.nombre">
+        <div class="card-body">
+            <h5 class="card-title">{{producto.nombre}}</h5>
+
+            <p class="card-text">
+                {{producto.descripcion}}
+            </p>
+
+            <p>
+                <span>Precio:</span> {{producto.precio}}
+            </p>
+
+            <p>
+                <span>Stock:</span>
+                @if(producto.stock >0) {
+                    {{producto.stock}}
+                }@else {
+                    <span class="text-danger">
+                        Sin stock
+                    </span>
+                }
+            </p>
+
+            <a class="btn btn-primary" routerLink="/products">Volver</a>
+            <a class="btn btn-danger" (click)="eliminarProducto()">Eliminar</a>
+        </div>
+    </div>
+    }
+</div>
