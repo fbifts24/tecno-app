@@ -1,0 +1,46 @@
+@api = http://localhost:3000
+
+### Probar API
+GET {{api}}
+
+### Obtener todos los productos
+GET {{api}}/api/productos
+
+### Obtener producto por ID
+GET {{api}}/api/productos/1
+
+### Crear producto
+POST {{api}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Cámara Web Genius",
+  "descripcion": "Cámara web HD para videollamadas",
+  "precio": 35000,
+  "stock": 10,
+  "imagen": "https://images.unsplash.com/photo-1587826080692-f439cd0b70da"
+}
+
+### Actualizar producto
+PUT {{api}}/api/productos/1
+Content-Type: application/json
+
+{
+  "nombre": "Notebook Lenovo Actualizada",
+  "descripcion": "Notebook Lenovo ThinkPad E14 con 16GB RAM",
+  "precio": 1350000,
+  "stock": 4,
+  "imagen": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853"
+}
+
+### Actualizar precio y stock
+PATCH {{api}}/api/productos/1
+Content-Type: application/json
+
+{
+  "precio": 1500000,
+  "stock": 8
+}
+
+### Eliminar producto
+DELETE {{api}}/api/productos/22
