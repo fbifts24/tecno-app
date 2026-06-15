@@ -1,1 +1,146 @@
-<p>product-create works!</p>
+<!-- FORMULARIO BASADO EN PLANITLLA -->
+
+<div class="container">
+    <form #miFormulario="ngForm" (ngSubmit)="crearProducto()">
+
+        <div class="mb-3">
+
+            <label for="nombre" class="form-label">Nombre</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="nombre" name="nombre"
+            [(ngModel)]="producto.nombre"
+            required
+            minlength="3"
+            #nombre="ngModel"
+            [ngClass]="{
+                'is-valid': nombre.valid && nombre.touched,
+                'is-invalid': nombre.invalid && nombre.touched
+            }"
+            autocomplete="off">
+        </div>
+        
+        @if(nombre.errors?.['required'] && nombre.touched) {
+            <div class="text-danger">
+                Nombre requerido
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="descripcion" class="form-label">Descripcion</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="descripcion" name="descripcion"
+            [(ngModel)]="producto.descripcion"
+            required
+            minlength="3"
+            #descripcion="ngModel"
+            [ngClass]="{
+                'is-valid': descripcion.valid && descripcion.touched,
+                'is-invalid': descripcion.invalid && descripcion.touched
+            }"
+            autocomplete="off">
+        </div>
+        
+        @if(descripcion.errors?.['required'] && descripcion.touched) {
+            <div class="text-danger">
+                Descripcion requerida
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="precio" class="form-label">Precio</label>
+
+            <input
+            type="number"
+            class="form-control"
+            id="precio" name="precio"
+            [(ngModel)]="producto.precio"
+            required
+            min="0"
+            #precio="ngModel"
+            [ngClass]="{
+                'is-valid': precio.valid && precio.touched,
+                'is-invalid': precio.invalid && precio.touched
+            }"
+            autocomplete="off">
+        </div>
+        
+        @if(precio.errors?.['required'] && precio.touched) {
+            <div class="text-danger">
+                Precio requerido
+            </div>
+        }
+
+        @if(precio.errors?.['min'] && precio.touched) {
+            <div class="text-danger">
+                El valor no puede ser negativo
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="stock" class="form-label">Stock</label>
+
+            <input
+            type="number"
+            class="form-control"
+            id="stock" name="stock"
+            [(ngModel)]="producto.stock"
+            required
+            min="0"
+            #stock="ngModel"
+            [ngClass]="{
+                'is-valid': stock.valid && stock.touched,
+                'is-invalid': stock.invalid && stock.touched
+            }"
+            autocomplete="off">
+        </div>
+        
+        @if(stock.errors?.['required'] && stock.touched) {
+            <div class="text-danger">
+                Stock requerido
+            </div>
+        }
+
+        @if(stock.errors?.['min'] && stock.touched) {
+            <div class="text-danger">
+                El valor no puede ser negativo
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="imagen" class="form-label">Imagen</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="imagen" name="imagen"
+            [(ngModel)]="producto.imagen"
+            required
+            minlength="3"
+            #imagen="ngModel"
+            [ngClass]="{
+                'is-valid': imagen.valid && imagen.touched,
+                'is-invalid': imagen.invalid && imagen.touched
+            }"
+            autocomplete="off">
+        </div>
+        
+        @if(imagen.errors?.['required'] && imagen.touched) {
+            <div class="text-danger">
+                URL de la imagen requerida
+            </div>
+        }
+
+        <button type="submit" class="btn btn-primary" [disabled]="miFormulario.invalid">Crear producto</button>
+
+    </form>
+</div>

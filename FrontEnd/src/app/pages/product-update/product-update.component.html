@@ -1,1 +1,306 @@
-<p>product-update works!</p>
+<!-- FORMULARIO BASADO EN PLANITLLA -->
+
+<div class="container">
+    <h2 class="my-5">Formulario para PATCH</h2>
+    
+    <form #miFormPATCH="ngForm" class="mb-5" (ngSubmit)="actualizarProductoPATCH()">
+
+        <div class="mb-3">
+
+            <label for="nombre" class="form-label">Nombre</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="nombre" name="nombre"
+            [(ngModel)]="nombre"
+            required
+            minlength="3"
+            #nombreInput="ngModel"
+            [ngClass]="{
+                'is-valid': nombreInput.valid && nombreInput.touched,
+                'is-invalid': nombreInput.invalid && nombreInput.touched
+            }"
+            autocomplete="off"
+            [placeholder]="producto.nombre">
+        </div>
+        
+        @if(nombreInput.errors?.['required'] && nombreInput.touched) {
+            <div class="text-danger">
+                Nombre requerido
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="descripcion" class="form-label">Descripcion</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="descripcion" name="descripcion"
+            [(ngModel)]="descripcion"
+            required
+            minlength="3"
+            #descripcionInput="ngModel"
+            [ngClass]="{
+                'is-valid': descripcionInput.valid && descripcionInput.touched,
+                'is-invalid': descripcionInput.invalid && descripcionInput.touched
+            }"
+            autocomplete="off"
+            [placeholder]="producto.descripcion">
+        </div>
+        
+        @if(descripcionInput.errors?.['required'] && descripcionInput.touched) {
+            <div class="text-danger">
+                Descripcion requerida
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="precio" class="form-label">Precio</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="precio" name="precio"
+            [(ngModel)]="precio"
+            (ngModelChange)="validarPrecio()"
+            required
+            #precioInput="ngModel"
+            [ngClass]="{
+                'is-valid': precioInput.valid && !precioInvalido && precioInput.touched,
+                'is-invalid': precioInvalido && precioInput.touched
+            }"
+            autocomplete="off"
+            [placeholder]="producto.precio">
+        </div>
+        
+        @if(precioInput.errors?.['required'] && precioInput.touched) {
+            <div class="text-danger">
+                Precio requerido
+            </div>
+        }
+        
+        @if(precioInvalido) {
+            <div class="text-danger">
+                El precio es invalido
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="stock" class="form-label">Stock</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="stock" name="stock"
+            [(ngModel)]="stock"
+            (ngModelChange)="validarStock()"
+            required
+            #stockInput="ngModel"
+            [ngClass]="{
+                'is-valid': stockInput.valid && !stockInvalido && stockInput.touched,
+                'is-invalid': stockInvalido && stockInput.touched
+            }"
+            autocomplete="off"
+            [placeholder]="producto.stock">
+        </div>
+        
+        @if(stockInput.errors?.['required'] && stockInput.touched) {
+            <div class="text-danger">
+                Stock requerido
+            </div>
+        }
+        
+        @if(stockInvalido) {
+            <div class="text-danger">
+                El stock es invalido
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="imagen" class="form-label">Imagen</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="imagen" name="imagen"
+            [(ngModel)]="imagen"
+            required
+            minlength="3"
+            #imagenInput="ngModel"
+            [ngClass]="{
+                'is-valid': imagenInput.valid && imagenInput.touched,
+                'is-invalid': imagenInput.invalid && imagenInput.touched
+            }"
+            autocomplete="off"
+            [placeholder]="producto.imagen">
+        </div>
+        
+        @if(imagenInput.errors?.['required'] && imagenInput.touched) {
+            <div class="text-danger">
+                URL de la imagen requerida
+            </div>
+        }
+
+        <button type="submit" class="btn btn-primary" [disabled]="formularioVacio() || precioInvalido || stockInvalido">Actualizar producto</button>
+
+    </form>
+
+
+
+
+    <hr>
+    
+    
+    
+    
+    <h2 class="my-5">Formulario para PUT</h2>
+    
+    <form #miFormPUT="ngForm" (ngSubmit)="actualizarProductoPUT()">
+
+        <div class="mb-3">
+
+            <label for="nombre" class="form-label">Nombre</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="nombre" name="nombre"
+            [(ngModel)]="producto.nombre"
+            required
+            minlength="3"
+            #nombreInput="ngModel"
+            [ngClass]="{
+                'is-valid': nombreInput.valid && nombreInput.touched,
+                'is-invalid': nombreInput.invalid && nombreInput.touched
+            }"
+            autocomplete="off">
+        </div>
+        
+        @if(nombreInput.errors?.['required'] && nombreInput.touched) {
+            <div class="text-danger">
+                Nombre requerido
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="descripcion" class="form-label">Descripcion</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="descripcion" name="descripcion"
+            [(ngModel)]="producto.descripcion"
+            required
+            minlength="3"
+            #descripcionInput="ngModel"
+            [ngClass]="{
+                'is-valid': descripcionInput.valid && descripcionInput.touched,
+                'is-invalid': descripcionInput.invalid && descripcionInput.touched
+            }"
+            autocomplete="off">
+        </div>
+        
+        @if(descripcionInput.errors?.['required'] && descripcionInput.touched) {
+            <div class="text-danger">
+                Descripcion requerida
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="precio" class="form-label">Precio</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="precio" name="precio"
+            [(ngModel)]="producto.precio"
+            (ngModelChange)="validarPrecio()"
+            required
+            #precioInput="ngModel"
+            [ngClass]="{
+                'is-valid': precioInput.valid && !precioInvalido && precioInput.touched,
+                'is-invalid': precioInvalido && precioInput.touched
+            }"
+            autocomplete="off">
+        </div>
+        
+        @if(precioInput.errors?.['required'] && precioInput.touched) {
+            <div class="text-danger">
+                Precio requerido
+            </div>
+        }
+        
+        @if(precioInvalido) {
+            <div class="text-danger">
+                El precio es invalido
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="stock" class="form-label">Stock</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="stock" name="stock"
+            [(ngModel)]="producto.stock"
+            (ngModelChange)="validarStock()"
+            required
+            #stockInput="ngModel"
+            [ngClass]="{
+                'is-valid': stockInput.valid && !stockInvalido && stockInput.touched,
+                'is-invalid': stockInvalido && stockInput.touched
+            }"
+            autocomplete="off">
+        </div>
+        
+        @if(stockInput.errors?.['required'] && stockInput.touched) {
+            <div class="text-danger">
+                Stock requerido
+            </div>
+        }
+        
+        @if(stockInvalido) {
+            <div class="text-danger">
+                El stock es invalido
+            </div>
+        }
+
+        <div class="mb-3">
+
+            <label for="imagen" class="form-label">Imagen</label>
+
+            <input
+            type="text"
+            class="form-control"
+            id="imagen" name="imagen"
+            [(ngModel)]="producto.imagen"
+            required
+            minlength="3"
+            #imagenInput="ngModel"
+            [ngClass]="{
+                'is-valid': imagenInput.valid && imagenInput.touched,
+                'is-invalid': imagenInput.invalid && imagenInput.touched
+            }"
+            autocomplete="off">
+        </div>
+        
+        @if(imagenInput.errors?.['required'] && imagenInput.touched) {
+            <div class="text-danger">
+                URL de la imagen requerida
+            </div>
+        }
+
+        <button type="submit" class="btn btn-primary" [disabled]="miFormPUT.invalid || precioInvalido || stockInvalido">Actualizar producto</button>
+
+    </form>
+</div>

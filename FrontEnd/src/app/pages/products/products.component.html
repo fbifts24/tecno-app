@@ -1,6 +1,8 @@
 <div class="container">
     <h2 class="mb-4">Productos disponibles</h2>
 
+    <a class="btn btn-primary mb-4" routerLink="/products/create">Agregar producto</a>
+
     @if (productos.length === 0) {
     <div class="alert alert-warning">
         No hay productos disponibles
@@ -22,7 +24,7 @@
             <tr>
                 <td>{{producto.id}}</td>
                 <td>{{producto.nombre}}</td>
-                <td>{{producto.precio}}</td>
+                <td>${{producto.precio}}</td>
                 <td>
                     @if(producto.stock > 0) {
 
