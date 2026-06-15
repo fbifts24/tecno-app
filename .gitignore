@@ -1,3 +1,13 @@
+# Dependencias
 **/node_modules
 
+# Variables de entorno
 **/.env
+
+# Angular
+**/.angular
+**/dist
+
+# Logs
+**/*.log
+npm-debug.log*
