@@ -1,1 +1,120 @@
-<p>contact works!</p>
+<div class="container">
+
+    <form [formGroup]="miFormulario" (ngSubmit)="enviar()">
+
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input 
+             type="text"
+             id="nombre"
+             class="form-control"
+             formControlName="nombre"
+             autocomplete="off"
+             [ngClass]="{'is-invalid': campoInvalido('nombre'),
+                'is-valid': campoValido('nombre')
+             }"
+             >
+
+             @if (mostrarErrores('nombre', 'required')) {
+                <div class="text-danger">Nombre requerido</div>
+             }
+
+             @if (mostrarErrores('nombre', 'minlength')) {
+                <div class="text-danger">Minimo tres caracteres</div>
+             }
+        </div>
+
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input 
+             type="text"
+             id="apellido"
+             class="form-control"
+             formControlName="apellido"
+             autocomplete="off"
+             [ngClass]="{'is-invalid': campoInvalido('apellido'),
+                'is-valid': campoValido('apellido')
+             }"
+             >
+
+             @if (mostrarErrores('apellido', 'required')) {
+                <div class="text-danger">Apellido requerido</div>
+             }
+
+             @if (mostrarErrores('apellido', 'minlength')) {
+                <div class="text-danger">Minimo tres caracteres</div>
+             }
+        </div>
+
+        <div class="mb-3">
+            <label for="edad" class="form-label">Edad</label>
+            <input 
+             type="number"
+             id="edad"
+             class="form-control"
+             formControlName="edad"
+             autocomplete="off"
+             [ngClass]="{'is-invalid': campoInvalido('edad'),
+                'is-valid': campoValido('edad')
+             }"
+             >
+
+             @if (mostrarErrores('edad', 'required')) {
+                <div class="text-danger">Edad requerida</div>
+             }
+
+             @if (mostrarErrores('edad', 'min')) {
+                <div class="text-danger">Debe ser mayor de edad</div>
+             }
+        </div>
+
+        <div class="mb-3">
+            <label for="tipoDni" class="form-label">Tipo documento</label>
+            <select 
+             type="text"
+             id="tipoDni"
+             class="form-control"
+             formControlName="tipoDni"
+             autocomplete="off"
+             [ngClass]="{'is-invalid': campoInvalido('tipoDni'),
+                'is-valid': campoValido('tipoDni')
+             }"
+             >
+
+                <option value="" disabled>Seleccionar</option>
+                <option value="DNI">DNI</option>
+                <option value="Pasaporte">Pasaporte</option>
+             </select>
+             @if (mostrarErrores('tipoDni', 'required')) {
+                <div class="text-danger">Tipo de documento requerido</div>}
+
+        </div>
+
+        <div class="mb-3">
+            <label for="dni" class="form-label">{{etiquetaDocumento}}</label>
+            <input 
+             type="text"
+             id="dni"
+             class="form-control"
+             formControlName="dni"
+             autocomplete="off"
+             [ngClass]="{'is-invalid': campoInvalido('dni'),
+                'is-valid': campoValido('dni')
+             }"
+             >
+
+             @if (mostrarErrores('dni', 'required')) {
+                <div class="text-danger">Documento requerido</div>
+             }
+
+             @if (mostrarErrores('dni', 'minlength')) {
+                <div class="text-danger">Minimo siete caracteres</div>
+             }
+        </div>
+
+
+        <button type="submit" class="btn btn-primary" [disabled]="miFormulario.invalid"> 
+            Enviar
+        </button>
+    </form>
+</div>

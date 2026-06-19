@@ -165,7 +165,7 @@ VALUES
     'Notebook Dell Inspiron 15 pulgadas',
     1350000,
     6,
-    'https://images.unsplash.com/photo-1622286346003-c5c7e63b1088?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Tm90ZWJvb2slMjBEZWxsJTIwSW5zcGlyb24lMjAxNSUyMHB1bGdhZGFzfGVufDB8fDB8fHww'
+    'https://images.unsplash.com/photo-1622286346003-c5c7e63b1088'
 );
 
 -- CONSULTA DE PRUEBA
